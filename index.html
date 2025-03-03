@@ -1,72 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FrogGraphics 🐸 | Comics & Art</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frog Incorperated | Comics &amp; Art</title>
+  <style>
+    /* Variables & Reset */
+    :root {
+      --primary-green: #2E7D32;  /* Muted green */
+      --accent-green: #81C784;   /* Soft green */
+      --white: #FFFFFF;
+      --light-grey: #F5F5F5;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--white);
+      color: #333;
+    }
+    /* Header */
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      background: var(--light-grey);
+    }
+    .logo {
+      width: 80px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    .tagline {
+      color: var(--primary-green);
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    nav li {
+      cursor: pointer;
+    }
+    nav a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.3s;
+      padding: 0.5rem 1rem;
+    }
+    nav a:hover,
+    nav a.active {
+      color: var(--primary-green);
+    }
+    /* Content Container & Sections */
+    .content-container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      min-height: 60vh;
+    }
+    .section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    .section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Gallery Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: translateY(-4px);
+    }
+    /* Form Container */
+    .form-container {
+      background: var(--light-grey);
+      padding: 2rem;
+      border-radius: 12px;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--primary-green);
+      color: var(--white);
+      margin-top: 2rem;
+    }
+    footer a {
+      color: var(--accent-green);
+    }
+  </style>
 </head>
 <body>
   <!-- Header with Logo -->
   <header>
     <div class="header-content">
-      <img src="logo.png" alt="FrogGraphics Logo" class="logo">
-      <h1>FrogGraphics</h1>
+      <img src="logo.png" alt="Frog Incorperated Logo" class="logo" />
+      <h1>Frog Incorperated</h1>
     </div>
-    <p class="tagline">Your new favorite comics await you…</p>
+    <p class="tagline">Your new favorite comics and art experience.</p>
   </header>
 
-  <!-- Navigation -->
+  <!-- Navigation Tabs -->
   <nav>
     <ul>
-      <li><a href="#comics">Comics</a></li>
-      <li><a href="#samples">Samples</a></li>
-      <li><a href="#commission">Commission</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#" class="tab-link active" data-target="home">Home</a></li>
+      <li><a href="#" class="tab-link" data-target="comics">Comics</a></li>
+      <li><a href="#" class="tab-link" data-target="general-art">General Art</a></li>
+      <li><a href="#" class="tab-link" data-target="cinematic-art">Cinematic Art</a></li>
+      <li><a href="#" class="tab-link" data-target="creative-writing">Creative Writing</a></li>
+      <li><a href="#" class="tab-link" data-target="animation">Animation</a></li>
+      <li><a href="#" class="tab-link" data-target="music">Music</a></li>
+      <li><a href="#" class="tab-link" data-target="advertisement">Advertisement</a></li>
+      <li><a href="#" class="tab-link" data-target="toys">Toys</a></li>
+      <li><a href="#" class="tab-link" data-target="commission">Commission</a></li>
+      <li><a href="#" class="tab-link" data-target="about">About</a></li>
     </ul>
   </nav>
 
-  <!-- Comics Section -->
-  <section id="comics" class="section">
-    <h2>Latest Comics</h2>
-    <div class="gallery">
-      <img src="comics/comic1.jpg" alt="Comic 1">
-      <img src="comics/comic2.jpg" alt="Comic 2">
-    </div>
-  </section>
+  <!-- Main Content Container -->
+  <div class="content-container">
+    <!-- Home Section -->
+    <section id="home" class="section active">
+      <h2>Welcome to Frog Incorperated</h2>
+      <p>Discover our creative world of comics and art.</p>
+      <div class="gallery">
+        <img src="comics/comic1.jpg" alt="Featured Comic" />
+        <img src="samples/sample1.jpg" alt="Featured Art" />
+      </div>
+    </section>
 
-  <!-- Samples Section -->
-  <section id="samples" class="section">
-    <h2>Art Samples</h2>
-    <div class="gallery">
-      <img src="samples/sample1.jpg" alt="Sample Art 1">
-      <img src="samples/sample2.jpg" alt="Sample Art 2">
-    </div>
-  </section>
+    <!-- Comics Section -->
+    <section id="comics" class="section">
+      <h2>Comics</h2>
+      <div class="gallery">
+        <img src="comics/comic1.jpg" alt="Comic 1" />
+        <img src="comics/comic2.jpg" alt="Comic 2" />
+        <!-- Additional comics images can be added here -->
+      </div>
+    </section>
 
-  <!-- Commission Form -->
-  <section id="commission" class="section">
-    <h2>Request Commission</h2>
-    <div class="form-container">
-      <iframe 
-        src="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUMlNPQjkwMVM2Q1c3OTBFRVBJUlhOV1JaNi4u" 
-        width="100%" 
-        height="800px" 
-        frameborder="0" 
-        style="border: 1px solid #e0e0e0; border-radius: 8px;"
-      ></iframe>
-    </div>
-  </section>
+    <!-- General Art Section -->
+    <section id="general-art" class="section">
+      <h2>General Art</h2>
+      <div class="gallery">
+        <img src="samples/sample1.jpg" alt="General Art 1" />
+        <img src="samples/sample2.jpg" alt="General Art 2" />
+      </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2>About Us</h2>
-    <p>We’re a collective of artists drawing comics. 🐸</p>
-  </section>
+    <!-- Cinematic Art Section -->
+    <section id="cinematic-art" class="section">
+      <h2>Cinematic Art</h2>
+      <div class="gallery">
+        <img src="cinematic/cinematic1.jpg" alt="Cinematic Art 1" />
+        <img src="cinematic/cinematic2.jpg" alt="Cinematic Art 2" />
+      </div>
+    </section>
+
+    <!-- Creative Writing Section -->
+    <section id="creative-writing" class="section">
+      <h2>Creative Writing</h2>
+      <p>Explore our creative stories and literary art.</p>
+      <!-- Samples of written art can be showcased here -->
+    </section>
+
+    <!-- Animation Section -->
+    <section id="animation" class="section">
+      <h2>Animation</h2>
+      <p>Watch our animated projects and shorts.</p>
+      <!-- Embedded videos or animated samples may be added -->
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="section">
+      <h2>Music</h2>
+      <p>Listen to our musical creations.</p>
+      <!-- Audio players or music samples can be embedded -->
+    </section>
+
+    <!-- Advertisement Section -->
+    <section id="advertisement" class="section">
+      <h2>Advertisement</h2>
+      <p>Discover our creative advertisement designs and campaigns.</p>
+      <!-- Promotional artworks and examples can be added -->
+    </section>
+
+    <!-- Toys Section -->
+    <section id="toys" class="section">
+      <h2>Toys</h2>
+      <p>Explore our range of creative toy designs and merchandise.</p>
+      <!-- Showcase toy designs and prototypes -->
+    </section>
+
+    <!-- Commission Section -->
+    <section id="commission" class="section">
+      <h2>Request Commission</h2>
+      <div class="form-container">
+        <iframe 
+          src="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUMlNPQjkwMVM2Q1c3OTBFRVBJUlhOV1JaNi4u" 
+          width="100%" 
+          height="800px" 
+          frameborder="0" 
+          style="border: 1px solid #e0e0e0; border-radius: 8px;">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2>About Us</h2>
+      <p>
+        We’re a collective of artists drawing comics and creating diverse art forms.
+        Welcome to Frog Incorperated.
+      </p>
+    </section>
+  </div>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 FrogGraphics</p>
+    <p>© 2025 Frog Incorperated</p>
   </footer>
+
+  <script>
+    // JavaScript for Tab Navigation with Smooth Fade Animations
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const sections = document.querySelectorAll('.section');
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('data-target');
+
+        // Remove 'active' class from all tabs and sections
+        tabLinks.forEach(link => link.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
+
+        // Activate the clicked tab and its corresponding section
+        link.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 </body>
-  </html>
+</html>
+
