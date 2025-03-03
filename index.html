@@ -11,7 +11,7 @@
       --accent-green: #81C784;
       --off-white: #f8f8f8; /* Off-white background */
       --light-grey: #F5F5F5;
-      --fixed-header-height: 100px; /* Adjusted height for fixed header */
+      --fixed-header-height: 100px; /* Approximate height when header is fixed */
     }
     * {
       margin: 0;
@@ -38,13 +38,12 @@
       padding: 2rem 0;
       transition: all 0.5s ease;
     }
-    /* Ensure logo sits directly next to title */
+    /* Logo positioned next to the title */
     .header-top .logo {
       width: 80px;
       height: auto;
       transition: all 0.5s ease;
     }
-    /* Container for title and tagline */
     .title-container {
       display: flex;
       flex-direction: column;
@@ -66,7 +65,7 @@
       background: #fff;
       transition: all 0.5s ease;
       position: relative;
-      z-index: 1100; /* Ensure nav is above other content */
+      z-index: 1100;
     }
     nav ul {
       display: flex;
@@ -110,17 +109,17 @@
     #header-container.scrolled .header-top h1 {
       font-size: 1.8rem;
     }
+    /* Placeholder to prevent snapping when header is fixed */
+    #header-placeholder {
+      height: 0;
+      transition: height 0.5s ease;
+    }
     /* Content Container */
     .content-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
       margin-top: 2rem;
-      transition: margin-top 0.5s ease;
-    }
-    /* When header is fixed, add top margin so content isn’t overlapped */
-    .content-container.fixed {
-      margin-top: var(--fixed-header-height);
     }
     .section {
       display: none;
@@ -228,6 +227,8 @@
       </ul>
     </nav>
   </div>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
 
   <!-- Main Content Container -->
   <div class="content-container" id="content">
@@ -390,19 +391,21 @@
       });
     });
 
-    // Header transformation on scroll
+    // Header transformation on scroll with placeholder adjustment
     const headerContainer = document.getElementById('header-container');
-    const contentContainer = document.getElementById('content');
+    const headerPlaceholder = document.getElementById('header-placeholder');
+
     window.addEventListener('scroll', () => {
       if(window.scrollY > 150) {
         headerContainer.classList.add('scrolled');
-        contentContainer.classList.add('fixed');
+        headerPlaceholder.style.height = headerContainer.offsetHeight + 'px';
       } else {
         headerContainer.classList.remove('scrolled');
-        contentContainer.classList.remove('fixed');
+        headerPlaceholder.style.height = '0px';
       }
     });
   </script>
 </body>
 </html>
+
 
