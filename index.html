@@ -12,6 +12,7 @@
       --off-white: #f8f8f8; /* Off-white background */
       --light-grey: #F5F5F5;
       --fixed-header-height: 100px; /* Approximate height when header is fixed */
+      --nav-link-width: 180px; /* Fixed width for all nav links */
     }
     * {
       margin: 0;
@@ -78,14 +79,17 @@
     nav li {
       cursor: pointer;
     }
-    nav a {
+    nav li a {
+      display: inline-block;
+      width: var(--nav-link-width);
+      text-align: center;
       color: #666;
       text-decoration: none;
       transition: color 0.3s, transform 0.2s;
       padding: 0.5rem 1rem;
     }
-    nav a:hover,
-    nav a.active {
+    nav li a:hover,
+    nav li a.active {
       color: var(--primary-green);
       transform: scale(1.05);
     }
@@ -109,7 +113,7 @@
     #header-container.scrolled .header-top h1 {
       font-size: 1.8rem;
     }
-    /* Placeholder to prevent snapping when header is fixed */
+    /* Header Placeholder to prevent layout jump */
     #header-placeholder {
       height: 0;
       transition: height 0.5s ease;
@@ -407,5 +411,6 @@
   </script>
 </body>
 </html>
+
 
 
