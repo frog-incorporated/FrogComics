@@ -7,10 +7,11 @@
   <style>
     /* Variables & Reset */
     :root {
-      --primary-green: #2E7D32;  /* Muted green */
-      --accent-green: #81C784;   /* Soft green */
-      --white: #FFFFFF;
+      --primary-green: #2E7D32;
+      --accent-green: #81C784;
+      --off-white: #f8f8f8; /* Off-white background */
       --light-grey: #F5F5F5;
+      --fixed-header-height: 70px;
     }
     * {
       margin: 0;
@@ -19,41 +20,50 @@
     }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: var(--white);
+      background: var(--off-white);
       color: #333;
+      line-height: 1.6;
     }
     /* Header Container */
     #header-container {
       width: 100%;
       transition: all 0.5s ease;
     }
-    /* Large Header (default) */
+    /* Full Header (default) */
     .header-top {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
       padding: 2rem 0;
       transition: all 0.5s ease;
     }
+    /* Ensure logo sits directly next to title */
     .header-top .logo {
       width: 80px;
       height: auto;
       transition: all 0.5s ease;
     }
+    /* Container for title and tagline */
+    .title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .header-top h1 {
       font-size: 2.5rem;
       color: var(--primary-green);
-      margin-top: 0.5rem;
       transition: all 0.5s ease;
     }
     .tagline {
       color: var(--primary-green);
       font-weight: 300;
       letter-spacing: 1px;
-      margin-top: 0.5rem;
       transition: all 0.5s ease;
     }
     /* Navigation */
     nav {
-      background: var(--white);
+      background: #fff;
       transition: all 0.5s ease;
     }
     nav ul {
@@ -83,30 +93,33 @@
       position: fixed;
       top: 0;
       left: 0;
-      background: var(--white);
+      width: 100%;
+      background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 0.5rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       z-index: 1000;
     }
     #header-container.scrolled .header-top {
-      padding: 0;
-      display: flex;
-      align-items: center;
+      padding: 0.5rem 1rem;
+      justify-content: flex-start;
     }
-    #header-container.scrolled .header-top h1,
-    #header-container.scrolled .tagline {
-      display: none;
+    #header-container.scrolled .header-top .logo {
+      width: 60px;
+    }
+    #header-container.scrolled .header-top h1 {
+      font-size: 1.8rem;
     }
     /* Content Container */
     .content-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
-      /* Ensure content is not hidden behind the fixed header */
-      margin-top: 90px;
+      /* default top margin for when header is not fixed */
+      margin-top: 2rem;
+      transition: margin-top 0.5s ease;
+    }
+    /* When header is fixed, push content down */
+    .content-container.fixed {
+      margin-top: var(--fixed-header-height);
     }
     .section {
       display: none;
@@ -181,7 +194,7 @@
       text-align: center;
       padding: 2rem;
       background: var(--primary-green);
-      color: var(--white);
+      color: #fff;
       margin-top: 2rem;
     }
     footer a {
@@ -190,12 +203,14 @@
   </style>
 </head>
 <body>
-  <!-- Header Container (Logo + Header Top + Nav) -->
+  <!-- Header Container (Logo, Title, Tagline + Nav) -->
   <div id="header-container">
     <div class="header-top">
       <img src="logo.png" alt="Frog Incorperated Logo" class="logo" />
-      <h1>Frog Incorperated</h1>
-      <p class="tagline">Your new favorite comics and art experience.</p>
+      <div class="title-container">
+        <h1>Frog Incorperated</h1>
+        <p class="tagline">Your new favorite comics and art experience.</p>
+      </div>
     </div>
     <nav>
       <ul>
@@ -214,14 +229,20 @@
   </div>
 
   <!-- Main Content Container -->
-  <div class="content-container">
-    <!-- Home Section -->
+  <div class="content-container" id="content">
+    <!-- Home Section with 8 Samples -->
     <section id="home" class="section active">
       <h2>Welcome to Frog Incorperated</h2>
       <p class="description">Discover our creative world of comics and art.</p>
       <div class="gallery">
-        <img src="c1.png" alt="Featured Comic" />
-        <img src="a1.png" alt="Featured Art" />
+        <img src="h1.png" alt="Home Sample h1" />
+        <img src="h2.png" alt="Home Sample h2" />
+        <img src="h3.png" alt="Home Sample h3" />
+        <img src="h4.png" alt="Home Sample h4" />
+        <img src="h5.png" alt="Home Sample h5" />
+        <img src="h6.png" alt="Home Sample h6" />
+        <img src="h7.png" alt="Home Sample h7" />
+        <img src="h8.png" alt="Home Sample h8" />
       </div>
     </section>
 
@@ -234,7 +255,6 @@
         <img src="c2.png" alt="Comic Sample c2" />
         <img src="c3.png" alt="Comic Sample c3" />
       </div>
-      <!-- Latest Comics Bundle -->
       <div class="bundle">
         <h3>Latest Comics Bundle</h3>
         <p class="description">Our newest bundle features a multi-chapter story with vibrant panels, humorous moments, and immersive narrative art. Check out the latest samples below.</p>
@@ -257,7 +277,7 @@
       </div>
     </section>
 
-    <!-- Frog Productions Section (Combined Cinematic Art & Animation) -->
+    <!-- Frog Productions Section -->
     <section id="frog-productions" class="section">
       <h2>Frog Productions</h2>
       <p class="description">Our production team brings cinematic storytelling and animation together, creating immersive visual experiences that transcend traditional art forms.</p>
@@ -318,70 +338,4 @@
           width="100%" 
           height="800px" 
           frameborder="0" 
-          style="border: 1px solid #e0e0e0; border-radius: 8px;">
-        </iframe>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-      <h2>About Us</h2>
-      <p class="description">We’re a collective of artists passionate about comics, art, and multimedia creativity. Get a glimpse into our world with an extensive gallery of our work.</p>
-      <div class="gallery">
-        <!-- 12 samples for the About page -->
-        <img src="a1.png" alt="About Sample a1" />
-        <img src="a2.png" alt="About Sample a2" />
-        <img src="a3.png" alt="About Sample a3" />
-        <img src="a4.png" alt="About Sample a4" />
-        <img src="a5.png" alt="About Sample a5" />
-        <img src="a6.png" alt="About Sample a6" />
-        <img src="a7.png" alt="About Sample a7" />
-        <img src="a8.png" alt="About Sample a8" />
-        <img src="a9.png" alt="About Sample a9" />
-        <img src="a10.png" alt="About Sample a10" />
-        <img src="a11.png" alt="About Sample a11" />
-        <img src="a12.png" alt="About Sample a12" />
-      </div>
-    </section>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Frog Incorperated</p>
-  </footer>
-
-  <script>
-    // Tab Navigation with Smooth Fade Animations
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const sections = document.querySelectorAll('.section');
-
-    tabLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = link.getAttribute('data-target');
-
-        // Remove 'active' class from all tabs and sections
-        tabLinks.forEach(link => link.classList.remove('active'));
-        sections.forEach(section => section.classList.remove('active'));
-
-        // Activate the clicked tab and its corresponding section
-        link.classList.add('active');
-        document.getElementById(target).classList.add('active');
-      });
-    });
-
-    // Header transformation on scroll
-    const headerContainer = document.getElementById('header-container');
-    window.addEventListener('scroll', () => {
-      if(window.scrollY > 150) { // threshold for triggering the header change
-        headerContainer.classList.add('scrolled');
-      } else {
-        headerContainer.classList.remove('scrolled');
-      }
-    });
-  </script>
-</body>
-</html>
-
-
-
+          style="border: 1px
