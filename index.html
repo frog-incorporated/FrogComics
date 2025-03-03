@@ -11,7 +11,7 @@
       --accent-green: #81C784;
       --off-white: #f8f8f8; /* Off-white background */
       --light-grey: #F5F5F5;
-      --fixed-header-height: 70px;
+      --fixed-header-height: 100px; /* Adjusted height for fixed header */
     }
     * {
       margin: 0;
@@ -65,6 +65,8 @@
     nav {
       background: #fff;
       transition: all 0.5s ease;
+      position: relative;
+      z-index: 1100; /* Ensure nav is above other content */
     }
     nav ul {
       display: flex;
@@ -113,11 +115,10 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
-      /* default top margin for when header is not fixed */
       margin-top: 2rem;
       transition: margin-top 0.5s ease;
     }
-    /* When header is fixed, push content down */
+    /* When header is fixed, add top margin so content isn’t overlapped */
     .content-container.fixed {
       margin-top: var(--fixed-header-height);
     }
@@ -338,4 +339,70 @@
           width="100%" 
           height="800px" 
           frameborder="0" 
-          style="border: 1px
+          style="border: 1px solid #e0e0e0; border-radius: 8px;">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2>About Us</h2>
+      <p class="description">We’re a collective of artists passionate about comics, art, and multimedia creativity. Get a glimpse into our world with an extensive gallery of our work.</p>
+      <div class="gallery">
+        <img src="a1.png" alt="About Sample a1" />
+        <img src="a2.png" alt="About Sample a2" />
+        <img src="a3.png" alt="About Sample a3" />
+        <img src="a4.png" alt="About Sample a4" />
+        <img src="a5.png" alt="About Sample a5" />
+        <img src="a6.png" alt="About Sample a6" />
+        <img src="a7.png" alt="About Sample a7" />
+        <img src="a8.png" alt="About Sample a8" />
+        <img src="a9.png" alt="About Sample a9" />
+        <img src="a10.png" alt="About Sample a10" />
+        <img src="a11.png" alt="About Sample a11" />
+        <img src="a12.png" alt="About Sample a12" />
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Frog Incorperated</p>
+  </footer>
+
+  <script>
+    // Tab Navigation with Smooth Fade Animations
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const sections = document.querySelectorAll('.section');
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('data-target');
+
+        // Remove active class from all tabs and sections
+        tabLinks.forEach(link => link.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
+
+        // Activate the clicked tab and its corresponding section
+        link.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    // Header transformation on scroll
+    const headerContainer = document.getElementById('header-container');
+    const contentContainer = document.getElementById('content');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 150) {
+        headerContainer.classList.add('scrolled');
+        contentContainer.classList.add('fixed');
+      } else {
+        headerContainer.classList.remove('scrolled');
+        contentContainer.classList.remove('fixed');
+      }
+    });
+  </script>
+</body>
+</html>
+
