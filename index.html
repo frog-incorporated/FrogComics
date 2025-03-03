@@ -7,12 +7,10 @@
   <style>
     /* Variables & Reset */
     :root {
-      --primary-green: #2E7D32;   /* Muted green */
-      --accent-green: #81C784;    /* Soft green */
+      --primary-green: #2E7D32;  /* Muted green */
+      --accent-green: #81C784;   /* Soft green */
       --white: #FFFFFF;
       --light-grey: #F5F5F5;
-      --nav-height: 60px;
-      --transition-duration: 0.5s;
     }
     * {
       margin: 0;
@@ -23,43 +21,48 @@
       font-family: 'Segoe UI', sans-serif;
       background: var(--white);
       color: #333;
-      padding-top: var(--nav-height);
-      scroll-behavior: smooth;
     }
-    /* Fixed Navigation */
+    /* Header Container */
+    #header-container {
+      width: 100%;
+      transition: all 0.5s ease;
+    }
+    /* Large Header (default) */
+    .header-top {
+      text-align: center;
+      padding: 2rem 0;
+      transition: all 0.5s ease;
+    }
+    .header-top .logo {
+      width: 80px;
+      height: auto;
+      transition: all 0.5s ease;
+    }
+    .header-top h1 {
+      font-size: 2.5rem;
+      color: var(--primary-green);
+      margin-top: 0.5rem;
+      transition: all 0.5s ease;
+    }
+    .tagline {
+      color: var(--primary-green);
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+      transition: all 0.5s ease;
+    }
+    /* Navigation */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: var(--nav-height);
       background: var(--white);
-      padding: 0 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      transition: all var(--transition-duration) ease;
-    }
-    /* Nav logo (small) inside the nav bar */
-    .nav-logo {
-      position: absolute;
-      left: 1rem;
-      width: 40px;
-      opacity: 0;
-      transition: opacity var(--transition-duration) ease;
-    }
-    nav.scrolled .nav-logo {
-      opacity: 1;
+      transition: all 0.5s ease;
     }
     nav ul {
       display: flex;
+      justify-content: center;
       gap: 1rem;
       list-style: none;
       flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
+      padding: 0.5rem 0;
     }
     nav li {
       cursor: pointer;
@@ -75,45 +78,35 @@
       color: var(--primary-green);
       transform: scale(1.05);
     }
-    /* Header (large logo above nav bar) */
-    header {
-      text-align: center;
-      padding: 2rem 0;
-      background: var(--light-grey);
-      transition: transform var(--transition-duration) ease, opacity var(--transition-duration) ease;
-    }
-    header.hidden {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    header .header-content {
+    /* Fixed Header on Scroll */
+    #header-container.scrolled {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 0.5rem 1rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1rem;
+      justify-content: space-between;
+      z-index: 1000;
     }
-    .logo {
-      width: 80px;
-      height: auto;
+    #header-container.scrolled .header-top {
+      padding: 0;
+      display: flex;
+      align-items: center;
     }
-    header h1 {
-      font-size: 2.5rem;
-      color: var(--primary-green);
+    #header-container.scrolled .header-top h1,
+    #header-container.scrolled .tagline {
+      display: none;
     }
-    .tagline {
-      text-align: center;
-      color: var(--primary-green);
-      font-weight: 300;
-      letter-spacing: 1px;
-      margin-top: 0.5rem;
-    }
-    /* Content Container & Sections */
+    /* Content Container */
     .content-container {
-      padding: 2rem;
       max-width: 1200px;
       margin: 0 auto;
-      position: relative;
-      min-height: 60vh;
+      padding: 2rem;
+      /* Ensure content is not hidden behind the fixed header */
+      margin-top: 90px;
     }
     .section {
       display: none;
@@ -158,26 +151,7 @@
       transform: translateY(-4px);
       opacity: 0.9;
     }
-    /* Text Gallery for Creative Writing */
-    .text-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem 0;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .text-sample {
-      background: var(--light-grey);
-      padding: 1rem;
-      border-left: 4px solid var(--primary-green);
-      font-style: italic;
-      transition: background var(--transition-duration) ease;
-    }
-    .text-sample:hover {
-      background: #f0f0f0;
-    }
-    /* Latest Bundle in Frog Comics */
+    /* Bundle Section within Frog Comics */
     .bundle {
       margin-top: 2rem;
       border-top: 1px solid #ddd;
@@ -188,6 +162,19 @@
       color: var(--primary-green);
       margin-bottom: 1rem;
       font-size: 1.8rem;
+    }
+    /* Text Samples for Creative Writing */
+    .text-samples blockquote {
+      background: var(--light-grey);
+      border-left: 4px solid var(--primary-green);
+      margin: 1rem auto;
+      padding: 1rem;
+      max-width: 800px;
+      font-style: italic;
+      transition: transform 0.3s;
+    }
+    .text-samples blockquote:hover {
+      transform: translateX(10px);
     }
     /* Footer */
     footer {
@@ -203,31 +190,28 @@
   </style>
 </head>
 <body>
-  <!-- Header with Large Logo & Name -->
-  <header id="main-header">
-    <div class="header-content">
+  <!-- Header Container (Logo + Header Top + Nav) -->
+  <div id="header-container">
+    <div class="header-top">
       <img src="logo.png" alt="Frog Incorperated Logo" class="logo" />
       <h1>Frog Incorperated</h1>
+      <p class="tagline">Your new favorite comics and art experience.</p>
     </div>
-    <p class="tagline">Your new favorite comics and art experience.</p>
-  </header>
-  
-  <!-- Fixed Navigation Tabs with Small Logo -->
-  <nav id="nav-bar">
-    <img src="logo.png" alt="Frog Incorperated Logo" class="nav-logo" />
-    <ul>
-      <li><a href="#" class="tab-link active" data-target="home">Home</a></li>
-      <li><a href="#" class="tab-link" data-target="frog-comics">Frog Comics</a></li>
-      <li><a href="#" class="tab-link" data-target="frog-general-art">Frog General Art</a></li>
-      <li><a href="#" class="tab-link" data-target="frog-productions">Frog Productions</a></li>
-      <li><a href="#" class="tab-link" data-target="frog-creative-writing">Frog Creative Writing</a></li>
-      <li><a href="#" class="tab-link" data-target="frog-music">Frog Music</a></li>
-      <li><a href="#" class="tab-link" data-target="frog-advertisement">Frog Advertisement</a></li>
-      <li><a href="#" class="tab-link" data-target="frog-toys">Frog Toys</a></li>
-      <li><a href="#" class="tab-link" data-target="commission">Commission</a></li>
-      <li><a href="#" class="tab-link" data-target="about">About</a></li>
-    </ul>
-  </nav>
+    <nav>
+      <ul>
+        <li><a href="#" class="tab-link active" data-target="home">Home</a></li>
+        <li><a href="#" class="tab-link" data-target="comics">Frog Comics</a></li>
+        <li><a href="#" class="tab-link" data-target="general-art">Frog General Art</a></li>
+        <li><a href="#" class="tab-link" data-target="frog-productions">Frog Productions</a></li>
+        <li><a href="#" class="tab-link" data-target="creative-writing">Frog Creative Writing</a></li>
+        <li><a href="#" class="tab-link" data-target="music">Frog Music</a></li>
+        <li><a href="#" class="tab-link" data-target="advertisement">Frog Advertisement</a></li>
+        <li><a href="#" class="tab-link" data-target="toys">Frog Toys</a></li>
+        <li><a href="#" class="tab-link" data-target="commission">Commission</a></li>
+        <li><a href="#" class="tab-link" data-target="about">About</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <!-- Main Content Container -->
   <div class="content-container">
@@ -242,9 +226,9 @@
     </section>
 
     <!-- Frog Comics Section -->
-    <section id="frog-comics" class="section">
+    <section id="comics" class="section">
       <h2>Frog Comics</h2>
-      <p class="description">Our comic department creates engaging storylines, dynamic characters, and detailed illustrations. Explore our archive and latest releases.</p>
+      <p class="description">Our comic department creates engaging storylines, dynamic characters, and detailed illustrations. Explore our archives and latest releases.</p>
       <div class="gallery">
         <img src="c1.png" alt="Comic Sample c1" />
         <img src="c2.png" alt="Comic Sample c2" />
@@ -263,7 +247,7 @@
     </section>
 
     <!-- Frog General Art Section -->
-    <section id="frog-general-art" class="section">
+    <section id="general-art" class="section">
       <h2>Frog General Art</h2>
       <p class="description">Our artists showcase digital paintings, sketches, and experimental art. We push boundaries with creative visuals and innovative designs.</p>
       <div class="gallery">
@@ -273,33 +257,32 @@
       </div>
     </section>
 
-    <!-- Frog Productions Section (Animation + Cinematic Art) -->
+    <!-- Frog Productions Section (Combined Cinematic Art & Animation) -->
     <section id="frog-productions" class="section">
       <h2>Frog Productions</h2>
-      <p class="description">Experience our visual storytelling through animation and cinematic art. We blend dynamic motion with captivating visuals to bring stories to life.</p>
+      <p class="description">Our production team brings cinematic storytelling and animation together, creating immersive visual experiences that transcend traditional art forms.</p>
       <div class="gallery">
-        <img src="p1.png" alt="Production Sample 1" />
-        <img src="p2.png" alt="Production Sample 2" />
-        <img src="p3.png" alt="Production Sample 3" />
+        <img src="fp1.png" alt="Frog Productions Sample 1" />
+        <img src="fp2.png" alt="Frog Productions Sample 2" />
+        <img src="fp3.png" alt="Frog Productions Sample 3" />
       </div>
     </section>
 
-    <!-- Frog Creative Writing Section (Text Samples) -->
-    <section id="frog-creative-writing" class="section">
+    <!-- Frog Creative Writing Section -->
+    <section id="creative-writing" class="section">
       <h2>Frog Creative Writing</h2>
-      <p class="description">Our writers craft engaging narratives and lyrical prose. Enjoy samples of our creative texts below.</p>
-      <div class="text-gallery">
-        <div class="text-sample">"Once upon a time in a pond of dreams, the leap of imagination changed everything."</div>
-        <div class="text-sample">"Words flow like water, carrying tales of courage, humor, and heart."</div>
-        <div class="text-sample">"Every story is a ripple in the vast ocean of creativity."</div>
-        <div class="text-sample">"Our pen dances on the page, painting pictures with words."</div>
+      <p class="description">Our writers craft engaging narratives and imaginative stories. Enjoy a selection of text samples that highlight our storytelling prowess.</p>
+      <div class="text-samples">
+        <blockquote>Sample Text 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</blockquote>
+        <blockquote>Sample Text 2: Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae.</blockquote>
+        <blockquote>Sample Text 3: Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.</blockquote>
       </div>
     </section>
 
     <!-- Frog Music Section -->
-    <section id="frog-music" class="section">
+    <section id="music" class="section">
       <h2>Frog Music</h2>
-      <p class="description">Dive into our musical creations—from catchy tunes to atmospheric scores that enhance our visual storytelling.</p>
+      <p class="description">Dive into our musical creations—from catchy tunes to atmospheric scores that complement our visual storytelling.</p>
       <div class="gallery">
         <img src="m1.png" alt="Music Sample 1" />
         <img src="m2.png" alt="Music Sample 2" />
@@ -307,9 +290,9 @@
     </section>
 
     <!-- Frog Advertisement Section -->
-    <section id="frog-advertisement" class="section">
+    <section id="advertisement" class="section">
       <h2>Frog Advertisement</h2>
-      <p class="description">Our ad department crafts creative campaigns that blend art with marketing to deliver memorable promotional content.</p>
+      <p class="description">Our ad department crafts creative campaigns, blending art and marketing to deliver memorable promotional content.</p>
       <div class="gallery">
         <img src="ad1.png" alt="Advertisement Sample 1" />
         <img src="ad2.png" alt="Advertisement Sample 2" />
@@ -317,9 +300,9 @@
     </section>
 
     <!-- Frog Toys Section -->
-    <section id="frog-toys" class="section">
+    <section id="toys" class="section">
       <h2>Frog Toys</h2>
-      <p class="description">We design imaginative toy concepts and merchandise that extend our creative universe beyond the page.</p>
+      <p class="description">We design fun, imaginative toy concepts and merchandise that extend our creative universe beyond the page.</p>
       <div class="gallery">
         <img src="t1.png" alt="Toy Sample 1" />
         <img src="t2.png" alt="Toy Sample 2" />
@@ -340,12 +323,12 @@
       </div>
     </section>
 
-    <!-- About Section (More Samples) -->
+    <!-- About Section -->
     <section id="about" class="section">
-      <h2>About</h2>
-      <p class="description">We’re a collective of artists passionate about comics, art, and multimedia creativity. Get a deeper glimpse into our world with an extended portfolio of our work.</p>
+      <h2>About Us</h2>
+      <p class="description">We’re a collective of artists passionate about comics, art, and multimedia creativity. Get a glimpse into our world with an extensive gallery of our work.</p>
       <div class="gallery">
-        <!-- 12 samples using file names a1.png through a12.png -->
+        <!-- 12 samples for the About page -->
         <img src="a1.png" alt="About Sample a1" />
         <img src="a2.png" alt="About Sample a2" />
         <img src="a3.png" alt="About Sample a3" />
@@ -368,7 +351,7 @@
   </footer>
 
   <script>
-    // JavaScript for Tab Navigation with Smooth Fade Animations
+    // Tab Navigation with Smooth Fade Animations
     const tabLinks = document.querySelectorAll('.tab-link');
     const sections = document.querySelectorAll('.section');
 
@@ -377,7 +360,7 @@
         e.preventDefault();
         const target = link.getAttribute('data-target');
 
-        // Remove active class from all tabs and sections
+        // Remove 'active' class from all tabs and sections
         tabLinks.forEach(link => link.classList.remove('active'));
         sections.forEach(section => section.classList.remove('active'));
 
@@ -387,22 +370,18 @@
       });
     });
 
-    // JavaScript for header and nav logo transition on scroll
-    const header = document.getElementById('main-header');
-    const navBar = document.getElementById('nav-bar');
-    const scrollThreshold = 100; // px
-
+    // Header transformation on scroll
+    const headerContainer = document.getElementById('header-container');
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > scrollThreshold) {
-        navBar.classList.add('scrolled');
-        header.classList.add('hidden');
+      if(window.scrollY > 150) { // threshold for triggering the header change
+        headerContainer.classList.add('scrolled');
       } else {
-        navBar.classList.remove('scrolled');
-        header.classList.remove('hidden');
+        headerContainer.classList.remove('scrolled');
       }
     });
   </script>
 </body>
 </html>
+
 
 
