@@ -147,6 +147,33 @@
       font-size: 1.1rem;
       color: #555;
     }
+    /* Order Now Button */
+    .order-button {
+      display: inline-block;
+      background: var(--primary-green);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+      margin: 1rem auto;
+    }
+    .order-button:hover {
+      background: var(--accent-green);
+    }
+    /* Full-Width Gallery for Samples */
+    .fullwidth-gallery {
+      display: block;
+      margin: 0 auto;
+    }
+    .fullwidth-gallery > * {
+      width: 100%;
+      display: block;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
     /* Standard Gallery (for departmental sections) */
     .gallery {
       display: grid;
@@ -166,18 +193,6 @@
     .gallery video:hover {
       transform: translateY(-4px);
       opacity: 0.9;
-    }
-    /* Full-Width Gallery for Home Department Samples */
-    .fullwidth-gallery {
-      display: block;
-      margin: 0 auto;
-    }
-    .fullwidth-gallery > * {
-      width: 100%;
-      display: block;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     /* Bundle Section in Frog Comics */
     .bundle {
@@ -218,7 +233,7 @@
     .slide {
       flex: 0 0 100%;
       width: 100%;
-      height: 700px; /* Increased height */
+      height: 700px; /* Taller height */
       background: url('paper-background.png') center/cover no-repeat;
       position: relative;
       cursor: pointer;
@@ -285,6 +300,7 @@
         <li><a href="#" class="tab-link" data-target="advertisement">Frog Advertisement</a></li>
         <li><a href="#" class="tab-link" data-target="toys">Frog Toys</a></li>
         <li><a href="#" class="tab-link" data-target="commission">Commission</a></li>
+        <li><a href="#" class="tab-link" data-target="referral">Referral</a></li>
         <li><a href="#" class="tab-link" data-target="about">About</a></li>
       </ul>
     </nav>
@@ -298,6 +314,10 @@
     <section id="home" class="section active">
       <h2>Welcome to Frog Incorporated</h2>
       <p class="description">Discover our creative world of comics, art, writing, music, and more.</p>
+      <!-- Order Now Button -->
+      <div style="text-align: center;">
+        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUNVY3QUlOWkU1OVBBNkRaVTFVTU5YVk85Ny4u" target="_blank" class="order-button">Order Now</a>
+      </div>
       
       <!-- Full-Width Auto-Scrolling Department Slider -->
       <div class="department-slider">
@@ -464,7 +484,7 @@
       <p class="description">Submit a request for custom work. The embedded form below makes it easy to get started.</p>
       <div class="form-container">
         <iframe 
-          src="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUMlNPQjkwMVM2Q1c3OTBFRVBJUlhOV1JaNi4u" 
+          src="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUNVY3QUlOWkU1OVBBNkRaVTFVTU5YVk85Ny4u" 
           width="100%" 
           height="800px" 
           frameborder="0" 
@@ -473,10 +493,22 @@
       </div>
     </section>
 
+    <!-- Referral Section -->
+    <section id="referral" class="section">
+      <h2>Referral</h2>
+      <p class="description">
+        Refer a friend to buy a comic and receive a free comic as a reward! 
+        Share your referral link with friends. When they order using your referral code, you'll be credited with a free comic.
+      </p>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="section">
       <h2>About Us</h2>
-      <p class="description">We’re a collective of artists passionate about comics, art, and multimedia creativity. Get a glimpse into our world with an extensive gallery of our work.</p>
+      <p class="description">
+        We’re a collective of artists passionate about comics, art, and multimedia creativity. 
+        Get a glimpse into our world with an extensive gallery of our work.
+      </p>
       <div class="gallery">
         <img src="a1.png" alt="About Sample a1" />
         <img src="a2.png" alt="About Sample a2" />
@@ -536,7 +568,6 @@
     const slidesContainer = document.querySelector('.slides');
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
-
     function showSlide(index) {
       slidesContainer.style.transform = 'translateX(-' + (index * 100) + '%)';
     }
@@ -552,9 +583,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
