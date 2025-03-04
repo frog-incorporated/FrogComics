@@ -147,23 +147,37 @@
       font-size: 1.1rem;
       color: #555;
     }
-    /* Gallery Grid */
+    /* Standard Gallery (for departmental sections) */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
       padding: 1rem 0;
     }
-    .gallery img {
+    .gallery img, 
+    .gallery video, 
+    .gallery blockquote {
       width: 100%;
-      height: auto;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s, opacity 0.3s;
     }
-    .gallery img:hover {
+    .gallery img:hover, 
+    .gallery video:hover {
       transform: translateY(-4px);
       opacity: 0.9;
+    }
+    /* Full-Width Gallery for Home Department Samples */
+    .fullwidth-gallery {
+      display: block;
+      margin: 0 auto;
+    }
+    .fullwidth-gallery > * {
+      width: 100%;
+      display: block;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     /* Bundle Section in Frog Comics */
     .bundle {
@@ -200,12 +214,11 @@
     .slides {
       display: flex;
       transition: transform 0.5s ease;
-      /* Ensure the slides container takes full width */
     }
     .slide {
       flex: 0 0 100%;
       width: 100%;
-      height: 500px; /* Adjust height as needed */
+      height: 700px; /* Increased height */
       background: url('paper-background.png') center/cover no-repeat;
       position: relative;
       cursor: pointer;
@@ -234,7 +247,7 @@
       margin-top: 0.5rem;
       font-size: 1rem;
     }
-    /* Spacer to extend scrolling before the footer */
+    /* Spacer */
     .spacer {
       height: 600px;
     }
@@ -279,7 +292,7 @@
   <!-- Header Placeholder -->
   <div id="header-placeholder"></div>
 
-  <!-- Main Content Container -->
+  <!-- Main Content -->
   <div class="content-container" id="content">
     <!-- Home Section -->
     <section id="home" class="section active">
@@ -340,16 +353,16 @@
         </div>
       </div>
       
-      <!-- Department Samples (for quick preview) -->
+      <!-- Department Samples (Full-Width) -->
       <h3 style="text-align:center; margin-top:2rem;">Department Samples</h3>
       <p class="description">Quick examples of each department (excluding Advertisement):</p>
-      <div class="gallery">
+      <div class="fullwidth-gallery">
         <!-- Comics (image) -->
         <img src="c-home.png" alt="Frog Comics Sample" title="Frog Comics Sample" />
         <!-- General Art (image) -->
         <img src="ga-home.png" alt="Frog General Art Sample" title="Frog General Art Sample" />
         <!-- Productions (video) -->
-        <video src="productions-home.mp4" controls style="width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+        <video src="productions-home.mp4" controls style="border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
           Your browser does not support HTML5 video.
         </video>
         <!-- Creative Writing (text snippet) -->
@@ -357,7 +370,7 @@
           “I parted the curtains of reality and found a world brimming with color and wonder, where no story ever truly ends…”
         </blockquote>
         <!-- Music (video/mp4) -->
-        <video src="music-sample.mp4" controls style="width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+        <video src="music-sample.mp4" controls style="border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
           Your browser does not support HTML5 video.
         </video>
         <!-- Toys (image) -->
@@ -432,7 +445,7 @@
     <section id="advertisement" class="section">
       <h2>Frog Advertisement</h2>
       <p class="description">Our ad department crafts creative campaigns, blending art and marketing to deliver memorable promotional content.</p>
-      <p style="text-align:center;">(No samples displayed here.)</p>
+      <p style="text-align:center;">(No samples displayed.)</p>
     </section>
 
     <!-- Frog Toys Section -->
@@ -455,8 +468,8 @@
           width="100%" 
           height="800px" 
           frameborder="0" 
-          style="border: 1px solid #e0e0e0; border-radius: 8px;">
-        </iframe>
+          style="border: 1px solid #e0e0e0; border-radius: 8px;"
+        ></iframe>
       </div>
     </section>
 
@@ -481,7 +494,7 @@
     </section>
   </div>
 
-  <!-- Spacer to extend scrolling before the footer -->
+  <!-- Spacer -->
   <div class="spacer"></div>
 
   <!-- Footer -->
@@ -489,7 +502,6 @@
     <p>© 2025 Frog Incorporated</p>
   </footer>
 
-  <!-- JavaScript -->
   <script>
     // Tab Navigation
     const tabLinks = document.querySelectorAll('.tab-link');
@@ -506,7 +518,7 @@
       });
     });
 
-    // Header scroll transformation with placeholder
+    // Header scroll transformation with placeholder adjustment
     const headerContainer = document.getElementById('header-container');
     const headerPlaceholder = document.getElementById('header-placeholder');
     window.addEventListener('scroll', () => {
@@ -540,6 +552,7 @@
   </script>
 </body>
 </html>
+
 
 
 
