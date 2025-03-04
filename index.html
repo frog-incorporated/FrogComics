@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frog Incorperated | Comics &amp; Art</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frog Incorporated | Comics &amp; Art</title>
   <style>
     /* Variables & Reset */
     :root {
@@ -11,8 +11,8 @@
       --accent-green: #81C784;
       --off-white: #f5f5f5; /* Off-white background */
       --light-grey: #F5F5F5;
-      --fixed-header-height: 100px; /* Approximate height when header is fixed */
-      --nav-link-width: 180px; /* Fixed width for all nav links */
+      --fixed-header-height: 100px;
+      --nav-link-width: 180px;
     }
     * {
       margin: 0;
@@ -25,12 +25,11 @@
       color: #333;
       line-height: 1.6;
     }
-    /* Header Container */
+    /* Header */
     #header-container {
       width: 100%;
       transition: all 0.5s ease;
     }
-    /* Full Header (default) */
     .header-top {
       display: flex;
       align-items: center;
@@ -39,7 +38,6 @@
       padding: 2rem 0;
       transition: all 0.5s ease;
     }
-    /* Logo positioned next to the title */
     .header-top .logo {
       width: 80px;
       height: auto;
@@ -113,7 +111,7 @@
     #header-container.scrolled .header-top h1 {
       font-size: 1.8rem;
     }
-    /* Header Placeholder to prevent layout jump */
+    /* Header Placeholder */
     #header-placeholder {
       height: 0;
       transition: height 0.5s ease;
@@ -137,7 +135,6 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Section Titles & Descriptions */
     .section h2 {
       color: var(--primary-green);
       margin-bottom: 1rem;
@@ -168,7 +165,7 @@
       transform: translateY(-4px);
       opacity: 0.9;
     }
-    /* Bundle Section within Frog Comics */
+    /* Bundle Section in Frog Comics */
     .bundle {
       margin-top: 2rem;
       border-top: 1px solid #ddd;
@@ -193,7 +190,51 @@
     .text-samples blockquote:hover {
       transform: translateX(10px);
     }
-    /* Spacer to extend scrolling length */
+    /* Department Slider */
+    .department-slider {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin: 2rem 0;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+      /* Ensure the slides container takes full width */
+    }
+    .slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 500px; /* Adjust height as needed */
+      background: url('paper-background.png') center/cover no-repeat;
+      position: relative;
+      cursor: pointer;
+    }
+    .slide-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    .slide-overlay img {
+      width: 40px;
+      height: 40px;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    .slide-overlay h3 {
+      display: inline;
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+    .slide-overlay p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+    /* Spacer to extend scrolling before the footer */
     .spacer {
       height: 600px;
     }
@@ -211,12 +252,12 @@
   </style>
 </head>
 <body>
-  <!-- Header Container (Logo, Title, Tagline + Nav) -->
+  <!-- Header -->
   <div id="header-container">
     <div class="header-top">
-      <img src="logo.png" alt="Frog Incorperated Logo" class="logo" />
+      <img src="logo.png" alt="Frog Incorporated Logo" class="logo" />
       <div class="title-container">
-        <h1>Frog Incorperated</h1>
+        <h1>Frog Incorporated</h1>
         <p class="tagline">Your new favorite comics and art experience.</p>
       </div>
     </div>
@@ -240,19 +281,87 @@
 
   <!-- Main Content Container -->
   <div class="content-container" id="content">
-    <!-- Home Section with 8 Samples -->
+    <!-- Home Section -->
     <section id="home" class="section active">
-      <h2>Welcome to Frog Incorperated</h2>
-      <p class="description">Discover our creative world of comics and art.</p>
+      <h2>Welcome to Frog Incorporated</h2>
+      <p class="description">Discover our creative world of comics, art, writing, music, and more.</p>
+      
+      <!-- Full-Width Auto-Scrolling Department Slider -->
+      <div class="department-slider">
+        <div class="slides">
+          <!-- Slide: Frog Comics -->
+          <div class="slide" data-target="comics" onclick="scrollToSection('comics')">
+            <div class="slide-overlay">
+              <img src="comics-logo.png" alt="Comics Logo">
+              <h3>Frog Comics</h3>
+              <p>Engaging storylines and dynamic characters.</p>
+            </div>
+          </div>
+          <!-- Slide: Frog General Art -->
+          <div class="slide" data-target="general-art" onclick="scrollToSection('general-art')">
+            <div class="slide-overlay">
+              <img src="art-logo.png" alt="Art Logo">
+              <h3>Frog General Art</h3>
+              <p>Digital paintings, sketches, and experimental art.</p>
+            </div>
+          </div>
+          <!-- Slide: Frog Productions -->
+          <div class="slide" data-target="frog-productions" onclick="scrollToSection('frog-productions')">
+            <div class="slide-overlay">
+              <img src="productions-logo.png" alt="Productions Logo">
+              <h3>Frog Productions</h3>
+              <p>Cinematic storytelling and animation.</p>
+            </div>
+          </div>
+          <!-- Slide: Frog Creative Writing -->
+          <div class="slide" data-target="creative-writing" onclick="scrollToSection('creative-writing')">
+            <div class="slide-overlay">
+              <img src="writing-logo.png" alt="Writing Logo">
+              <h3>Frog Creative Writing</h3>
+              <p>Imaginative narratives in text form.</p>
+            </div>
+          </div>
+          <!-- Slide: Frog Music -->
+          <div class="slide" data-target="music" onclick="scrollToSection('music')">
+            <div class="slide-overlay">
+              <img src="music-logo.png" alt="Music Logo">
+              <h3>Frog Music</h3>
+              <p>Catchy tunes and atmospheric scores.</p>
+            </div>
+          </div>
+          <!-- Slide: Frog Toys -->
+          <div class="slide" data-target="toys" onclick="scrollToSection('toys')">
+            <div class="slide-overlay">
+              <img src="toys-logo.png" alt="Toys Logo">
+              <h3>Frog Toys</h3>
+              <p>Fun and imaginative toy designs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Department Samples (for quick preview) -->
+      <h3 style="text-align:center; margin-top:2rem;">Department Samples</h3>
+      <p class="description">Quick examples of each department (excluding Advertisement):</p>
       <div class="gallery">
-        <img src="h1.png" alt="Home Sample h1" />
-        <img src="h2.png" alt="Home Sample h2" />
-        <img src="h3.png" alt="Home Sample h3" />
-        <img src="h4.png" alt="Home Sample h4" />
-        <img src="h5.png" alt="Home Sample h5" />
-        <img src="h6.png" alt="Home Sample h6" />
-        <img src="h7.png" alt="Home Sample h7" />
-        <img src="h8.png" alt="Home Sample h8" />
+        <!-- Comics (image) -->
+        <img src="c-home.png" alt="Frog Comics Sample" title="Frog Comics Sample" />
+        <!-- General Art (image) -->
+        <img src="ga-home.png" alt="Frog General Art Sample" title="Frog General Art Sample" />
+        <!-- Productions (video) -->
+        <video src="productions-home.mp4" controls style="width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+          Your browser does not support HTML5 video.
+        </video>
+        <!-- Creative Writing (text snippet) -->
+        <blockquote>
+          “I parted the curtains of reality and found a world brimming with color and wonder, where no story ever truly ends…”
+        </blockquote>
+        <!-- Music (video/mp4) -->
+        <video src="music-sample.mp4" controls style="width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+          Your browser does not support HTML5 video.
+        </video>
+        <!-- Toys (image) -->
+        <img src="t-home.png" alt="Frog Toys Sample" title="Frog Toys Sample" />
       </div>
     </section>
 
@@ -267,7 +376,7 @@
       </div>
       <div class="bundle">
         <h3>Latest Comics Bundle</h3>
-        <p class="description">Our newest bundle features a multi-chapter story with vibrant panels, humorous moments, and immersive narrative art. Check out the latest samples below.</p>
+        <p class="description">Our newest bundle features a multi-chapter story with vibrant panels, humorous moments, and immersive narrative art.</p>
         <div class="gallery">
           <img src="c4.png" alt="Bundle Sample c4" />
           <img src="c5.png" alt="Bundle Sample c5" />
@@ -323,10 +432,7 @@
     <section id="advertisement" class="section">
       <h2>Frog Advertisement</h2>
       <p class="description">Our ad department crafts creative campaigns, blending art and marketing to deliver memorable promotional content.</p>
-      <div class="gallery">
-        <img src="ad1.png" alt="Advertisement Sample 1" />
-        <img src="ad2.png" alt="Advertisement Sample 2" />
-      </div>
+      <p style="text-align:center;">(No samples displayed here.)</p>
     </section>
 
     <!-- Frog Toys Section -->
@@ -342,6 +448,7 @@
     <!-- Commission Section -->
     <section id="commission" class="section">
       <h2>Commission</h2>
+      <p class="description">Submit a request for custom work. The embedded form below makes it easy to get started.</p>
       <div class="form-container">
         <iframe 
           src="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUMlNPQjkwMVM2Q1c3OTBFRVBJUlhOV1JaNi4u" 
@@ -373,17 +480,18 @@
       </div>
     </section>
   </div>
-  
+
   <!-- Spacer to extend scrolling before the footer -->
   <div class="spacer"></div>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Frog Incorperated</p>
+    <p>© 2025 Frog Incorporated</p>
   </footer>
 
+  <!-- JavaScript -->
   <script>
-    // Tab Navigation with Smooth Fade Animations
+    // Tab Navigation
     const tabLinks = document.querySelectorAll('.tab-link');
     const sections = document.querySelectorAll('.section');
 
@@ -391,23 +499,18 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const target = link.getAttribute('data-target');
-
-        // Remove active class from all tabs and sections
-        tabLinks.forEach(link => link.classList.remove('active'));
-        sections.forEach(section => section.classList.remove('active'));
-
-        // Activate the clicked tab and its corresponding section
+        tabLinks.forEach(l => l.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
         link.classList.add('active');
         document.getElementById(target).classList.add('active');
       });
     });
 
-    // Header transformation on scroll with placeholder adjustment
+    // Header scroll transformation with placeholder
     const headerContainer = document.getElementById('header-container');
     const headerPlaceholder = document.getElementById('header-placeholder');
-
     window.addEventListener('scroll', () => {
-      if(window.scrollY > 150) {
+      if (window.scrollY > 150) {
         headerContainer.classList.add('scrolled');
         headerPlaceholder.style.height = headerContainer.offsetHeight + 'px';
       } else {
@@ -415,9 +518,29 @@
         headerPlaceholder.style.height = '0px';
       }
     });
+
+    // Department Slider Auto-scroll
+    let currentSlide = 0;
+    const slidesContainer = document.querySelector('.slides');
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slidesContainer.style.transform = 'translateX(-' + (index * 100) + '%)';
+    }
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }, 5000);
+
+    // Scroll to section when slide is clicked
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
   </script>
 </body>
 </html>
+
 
 
 
