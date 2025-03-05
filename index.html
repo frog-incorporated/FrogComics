@@ -191,7 +191,7 @@
     .slide {
       flex: 0 0 100%;
       width: 100%;
-      height: 600px; /* Adjusted height for easier scrolling */
+      height: 600px;
       background: url('paper-background.png') center/cover no-repeat;
       position: relative;
       cursor: pointer;
@@ -277,9 +277,9 @@
     .text-samples blockquote:hover {
       transform: translateX(10px);
     }
-    /* Reduced Spacer */
+    /* Spacer at the bottom of every page */
     .spacer {
-      height: 200px;
+      height: 300px; /* Increased white space at bottom */
     }
     /* Footer */
     footer {
@@ -292,7 +292,7 @@
     footer a {
       color: var(--accent-green);
     }
-    /* Media Query for Mobile (smaller pinned header) */
+    /* Media Query for Mobile: Smaller pinned header */
     @media (max-width: 600px) {
       .header-top {
         height: 50px;
@@ -346,10 +346,16 @@
     <!-- Home Section -->
     <section id="home" class="section active">
       <h2>Welcome to Frog Incorporated</h2>
-      <p class="description">Discover our creative world of comics, art, writing, music, and more.</p>
+      <p class="description">
+        Discover our creative world of comics, art, writing, music, and more.
+      </p>
       <!-- Order Now Button -->
       <div style="text-align: center;">
-        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUNVY3QUlOWkU1OVBBNkRaVTFVTU5YVk85Ny4u" target="_blank" class="order-button">
+        <a 
+          href="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUNVY3QUlOWkU1OVBBNkRaVTFVTU5YVk85Ny4u" 
+          target="_blank" 
+          class="order-button"
+        >
           Order Now
         </a>
       </div>
@@ -410,7 +416,9 @@
       
       <!-- Department Samples (Full-Width) -->
       <h3 style="text-align:center; margin-top:1rem;">Department Samples</h3>
-      <p class="description">Quick examples of each department (excluding Advertisement):</p>
+      <p class="description">
+        Quick examples of each department (excluding Advertisement):
+      </p>
       <div class="fullwidth-gallery">
         <!-- Comics (image) -->
         <img src="c-home.png" alt="Frog Comics Sample" title="Frog Comics Sample" />
@@ -436,7 +444,10 @@
     <!-- Frog Comics Section -->
     <section id="comics" class="section">
       <h2>Frog Comics</h2>
-      <p class="description">Our comic department creates engaging storylines, dynamic characters, and detailed illustrations. Explore our archives and latest releases.</p>
+      <p class="description">
+        Our comic department creates engaging storylines, dynamic characters, and detailed illustrations. 
+        Explore our archives and latest releases.
+      </p>
       <div class="gallery">
         <img src="c1.png" alt="Comic Sample c1" />
         <img src="c2.png" alt="Comic Sample c2" />
@@ -444,7 +455,9 @@
       </div>
       <div class="bundle">
         <h3>Latest Comics Bundle</h3>
-        <p class="description">Our newest bundle features a multi-chapter story with vibrant panels, humorous moments, and immersive narrative art.</p>
+        <p class="description">
+          Our newest bundle features a multi-chapter story with vibrant panels, humorous moments, and immersive narrative art.
+        </p>
         <div class="gallery">
           <img src="c4.png" alt="Bundle Sample c4" />
           <img src="c5.png" alt="Bundle Sample c5" />
@@ -456,7 +469,9 @@
     <!-- Frog General Art Section -->
     <section id="general-art" class="section">
       <h2>Frog General Art</h2>
-      <p class="description">Our artists showcase digital paintings, sketches, and experimental art. We push boundaries with creative visuals and innovative designs.</p>
+      <p class="description">
+        Our artists showcase digital paintings, sketches, and experimental art. We push boundaries with creative visuals and innovative designs.
+      </p>
       <div class="gallery">
         <img src="ga1.png" alt="General Art Sample 1" />
         <img src="ga2.png" alt="General Art Sample 2" />
@@ -467,7 +482,10 @@
     <!-- Frog Productions Section -->
     <section id="frog-productions" class="section">
       <h2>Frog Productions</h2>
-      <p class="description">Our production team brings cinematic storytelling and animation together, creating immersive visual experiences that transcend traditional art forms.</p>
+      <p class="description">
+        Our production team brings cinematic storytelling and animation together, creating immersive visual experiences 
+        that transcend traditional art forms.
+      </p>
       <div class="gallery">
         <img src="fp1.png" alt="Frog Productions Sample 1" />
         <img src="fp2.png" alt="Frog Productions Sample 2" />
@@ -478,7 +496,9 @@
     <!-- Frog Creative Writing Section -->
     <section id="creative-writing" class="section">
       <h2>Frog Creative Writing</h2>
-      <p class="description">Our writers craft engaging narratives and imaginative stories. Enjoy a selection of text samples that highlight our storytelling prowess.</p>
+      <p class="description">
+        Our writers craft engaging narratives and imaginative stories. Enjoy a selection of text samples that highlight our storytelling prowess.
+      </p>
       <div class="text-samples">
         <blockquote>Sample Text 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</blockquote>
         <blockquote>Sample Text 2: Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae.</blockquote>
@@ -489,7 +509,9 @@
     <!-- Frog Music Section -->
     <section id="music" class="section">
       <h2>Frog Music</h2>
-      <p class="description">Dive into our musical creations—from catchy tunes to atmospheric scores that complement our visual storytelling.</p>
+      <p class="description">
+        Dive into our musical creations—from catchy tunes to atmospheric scores that complement our visual storytelling.
+      </p>
       <div class="gallery">
         <img src="m1.png" alt="Music Sample 1" />
         <img src="m2.png" alt="Music Sample 2" />
@@ -499,14 +521,18 @@
     <!-- Frog Advertisement Section -->
     <section id="advertisement" class="section">
       <h2>Frog Advertisement</h2>
-      <p class="description">Our ad department crafts creative campaigns, blending art and marketing to deliver memorable promotional content.</p>
+      <p class="description">
+        Our ad department crafts creative campaigns, blending art and marketing to deliver memorable promotional content.
+      </p>
       <p style="text-align:center;">(No samples displayed.)</p>
     </section>
 
     <!-- Frog Toys Section -->
     <section id="toys" class="section">
       <h2>Frog Toys</h2>
-      <p class="description">We design fun, imaginative toy concepts and merchandise that extend our creative universe beyond the page.</p>
+      <p class="description">
+        We design fun, imaginative toy concepts and merchandise that extend our creative universe beyond the page.
+      </p>
       <div class="gallery">
         <img src="t1.png" alt="Toy Sample 1" />
         <img src="t2.png" alt="Toy Sample 2" />
@@ -516,7 +542,9 @@
     <!-- Commission Section -->
     <section id="commission" class="section">
       <h2>Commission</h2>
-      <p class="description">Submit a request for custom work. The embedded form below makes it easy to get started.</p>
+      <p class="description">
+        Submit a request for custom work. The embedded form below makes it easy to get started.
+      </p>
       <div class="form-container">
         <iframe 
           src="https://forms.office.com/Pages/ResponsePage.aspx?id=TR3rjaTQBE2JrvcHbLqp-0PzYfa5Z-JNl4o-iQiAcelUNVY3QUlOWkU1OVBBNkRaVTFVTU5YVk85Ny4u" 
@@ -532,14 +560,18 @@
     <section id="referral" class="section">
       <h2>Referral</h2>
       <p class="description">
-        Refer a friend to buy a comic and receive a free comic as a reward! Share your referral link with friends. When they order using your referral code, you'll be credited with a free comic.
+        Refer a friend to buy a comic and receive a free comic as a reward! 
+        Share your referral link with friends. When they order using your referral code, you'll be credited with a free comic.
       </p>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
       <h2>About Us</h2>
-      <p class="description">We’re a collective of artists passionate about comics, art, and multimedia creativity. Get a glimpse into our world with an extensive gallery of our work.</p>
+      <p class="description">
+        We’re a collective of artists passionate about comics, art, and multimedia creativity. 
+        Get a glimpse into our world with an extensive gallery of our work.
+      </p>
       <div class="gallery">
         <img src="a1.png" alt="About Sample a1" />
         <img src="a2.png" alt="About Sample a2" />
@@ -557,7 +589,7 @@
     </section>
   </div>
 
-  <!-- Spacer -->
+  <!-- Spacer (Extra white space at bottom) -->
   <div class="spacer"></div>
 
   <!-- Footer -->
@@ -569,7 +601,6 @@
     // Tab Navigation
     const tabLinks = document.querySelectorAll('.tab-link');
     const sections = document.querySelectorAll('.section');
-
     tabLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -582,11 +613,11 @@
       });
     });
 
-    // Header scroll transformation with improved threshold for short pages
+    // Header scroll transformation with extra white space at bottom
     const headerContainer = document.getElementById('header-container');
     const headerPlaceholder = document.getElementById('header-placeholder');
     window.addEventListener('scroll', () => {
-      // If page is short OR scrollY > threshold, keep header scrolled
+      // If page is short or scrollY > threshold, keep header scrolled
       if (document.documentElement.scrollHeight <= window.innerHeight + 120 || window.scrollY > 120) {
         headerContainer.classList.add('scrolled');
         headerPlaceholder.style.height = headerContainer.offsetHeight + 'px';
@@ -616,5 +647,6 @@
   </script>
 </body>
 </html>
+
 
 
